@@ -1,5 +1,4 @@
 import com.google.gson.Gson;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -9,7 +8,7 @@ import java.util.Scanner;
 
 public class Converter {
     public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
-        Scanner scan = new Scanner(new File("lista.csv"));
+        Scanner scan = new Scanner(new File(args[0]));
         ArrayList<Persona> personaArrayList = new ArrayList<Persona>();
         while(scan.hasNext()){
             String[] line = scan.nextLine().split(",");
@@ -20,10 +19,10 @@ public class Converter {
         Gson jsonFile = new Gson();
         System.out.println("Imprimiendo...");
         System.out.println(jsonFile.toJson(personaArrayList));
-        PrintWriter writer = new PrintWriter("lista.json", "UTF-8");
+        PrintWriter writer = new PrintWriter(args[1], "UTF-8");
         writer.println(jsonFile.toJson(personaArrayList));
         writer.close();
-        System.out.println("Guardado en lista.json");
+        System.out.println("Guardado en :"+args[1]);
 
 
     }
