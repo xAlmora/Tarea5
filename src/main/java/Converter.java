@@ -22,7 +22,7 @@ public class Converter {
         PrintWriter writer = new PrintWriter("output.json", "UTF-8");
         writer.println(jsonFile.toJson(personaArrayList));
         writer.close();
-        System.out.println("Guardado en :"+args[1]);
+        System.out.println("Guardado en :output.json");
 
 
     }
